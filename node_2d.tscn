@@ -1,0 +1,27 @@
+[gd_scene load_steps=8 format=3 uid="uid://bb01ou7oo7xio"]
+
+[ext_resource type="Script" path="res://node_2d.gd" id="1_43i8g"]
+[ext_resource type="Script" path="res://Earth.gd" id="1_adqwi"]
+[ext_resource type="Script" path="res://Moon.gd" id="2_g3qbh"]
+[ext_resource type="Texture2D" uid="uid://cycbnpfiu6erp" path="res://assets/earth_4.png" id="2_wp6ad"]
+[ext_resource type="Script" path="res://Rocket.gd" id="3_wsw5a"]
+[ext_resource type="Texture2D" uid="uid://bs6r8xwm5i22t" path="res://assets/moon_4.png" id="4_x0ey5"]
+[ext_resource type="Texture2D" uid="uid://bndrfwyabljta" path="res://assets/sun_10.png" id="6_2vqxk"]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_43i8g")
+
+[node name="Earth" type="Sprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_wp6ad")
+script = ExtResource("1_adqwi")
+
+[node name="Moon" type="Sprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("4_x0ey5")
+script = ExtResource("2_g3qbh")
+
+[node name="Rocket" type="Sprite2D" parent="."]
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("6_2vqxk")
+script = ExtResource("3_wsw5a")
