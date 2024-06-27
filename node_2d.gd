@@ -9,33 +9,20 @@ var min_zoom = 0.1
 var max_zoom = 5.0
 
 var SpawnedBody = preload("res://SpawnedBody.gd")  # Preload the SpawnedBody script
-var spawned_bodies = []  # Array to keep track of spawned bodies
+var bodies = []  # Array to keep track of grav bodies
 
 
 func _ready():
-	var screen_size = get_viewport().get_visible_rect().size
-	var screen_center = screen_size / 2
-
-	$Earth.position = screen_center
-	$Moon.position = $Earth.position + Vector2(300, 0)
-	$Moon.velocity = Vector2(0, -320) * time_scale  # Initial orbital velocity
+	$Moon.velocity = Vector2(-300, -300) * time_scale  # Initial orbital velocity
 	$Rocket.set_earth($Earth)
-	
-	camera.position = $Earth.position
+	bodies += [$Earth, $Moon, $Rocket]
 
 func _physics_process(delta):
-	apply_gravity($Earth, $Moon, delta)
-	if $Rocket.launched:
-		apply_gravity($Earth, $Rocket, delta)
-		apply_gravity($Moon, $Rocket, delta)
-	
 	# Apply gravity to spawned bodies
-	for body in spawned_bodies:
-		apply_gravity($Earth, body, delta)
-		apply_gravity($Moon, body, delta)
+	for body in bodies:
 		if $Rocket.launched:
 			apply_gravity($Rocket, body, delta)
-		for other_body in spawned_bodies:
+		for other_body in bodies:
 			if body != other_body:
 				apply_gravity(body, other_body, delta)
 
@@ -82,7 +69,7 @@ func spawn_body(position: Vector2):
 	new_body.position = position
 	new_body.velocity = Vector2(randf_range(-100, 100), randf_range(-100, 100))  # Random initial velocity
 	add_child(new_body)
-	spawned_bodies.append(new_body)
+	bodies.append(new_body)
 	
 	# Ensure the new body is on top of existing bodies
 	move_child(new_body, get_child_count() - 1)

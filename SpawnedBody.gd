@@ -12,7 +12,7 @@ func _ready():
 	visual.set_position(Vector2(-radius, -radius))  # Center the rect on the body's position
 	visual.color = Color(randf(), randf(), randf())  # Random color
 	add_child(visual)
-
+ 
 func _process(delta):
 	# Update the visual to match the body's rotation
 	visual.rotation = -rotation  # Negative to counter the body's rotation

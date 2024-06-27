@@ -16,21 +16,29 @@ script = ExtResource("1_43i8g")
 script = ExtResource("8_3spte")
 
 [node name="Earth" type="Sprite2D" parent="."]
+position = Vector2(1, 1)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("2_wp6ad")
 script = ExtResource("1_adqwi")
+mass = 500000.0
+radius = 40.0
 
 [node name="Moon" type="Sprite2D" parent="."]
+position = Vector2(200, -200)
 scale = Vector2(0.25, 0.25)
 texture = ExtResource("4_x0ey5")
 script = ExtResource("2_g3qbh")
+mass = 7500.0
+radius = 20.0
 
 [node name="Rocket" type="Sprite2D" parent="."]
 scale = Vector2(0.15, 0.15)
 texture = ExtResource("6_2vqxk")
 script = ExtResource("3_wsw5a")
+radius = 5.0
 
 [node name="LaunchIndicator" type="Line2D" parent="Rocket"]
 default_color = Color(0.941176, 0.784314, 0.0705882, 1)
 
 [node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(0, 2)

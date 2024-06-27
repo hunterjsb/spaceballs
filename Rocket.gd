@@ -10,10 +10,6 @@ var launch_angle = deg_to_rad(45)  # Launch angle in radians (45 degrees)
 
 @onready var launch_indicator = $LaunchIndicator
 
-func _ready():
-	mass = 1000  # Rocket mass in kg
-	radius = 5   # Adjust based on your sprite size
-
 func set_earth(earth_body: GravitationalBody):
 	earth = earth_body
 	update_position()
