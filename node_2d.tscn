@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://bb01ou7oo7xio"]
+[gd_scene load_steps=10 format=3 uid="uid://bb01ou7oo7xio"]
 
 [ext_resource type="Script" path="res://node_2d.gd" id="1_43i8g"]
 [ext_resource type="Script" path="res://Earth.gd" id="1_adqwi"]
 [ext_resource type="Script" path="res://Moon.gd" id="2_g3qbh"]
+[ext_resource type="Script" path="res://ParallaxLayer.gd" id="2_h6sv8"]
 [ext_resource type="Texture2D" uid="uid://cycbnpfiu6erp" path="res://assets/earth_4.png" id="2_wp6ad"]
 [ext_resource type="Script" path="res://Rocket.gd" id="3_wsw5a"]
 [ext_resource type="Texture2D" uid="uid://bs6r8xwm5i22t" path="res://assets/moon_4.png" id="4_x0ey5"]
@@ -21,6 +22,9 @@ offset_right = 25.0
 offset_bottom = 21.0
 scale = Vector2(29.5176, 17.0056)
 color = Color(0, 0, 0, 1)
+
+[node name="StarField" type="ParallaxLayer" parent="ParallaxBackground"]
+script = ExtResource("2_h6sv8")
 
 [node name="GravitationalBody" type="Sprite2D" parent="."]
 script = ExtResource("8_3spte")
