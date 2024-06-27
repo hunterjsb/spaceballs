@@ -1,7 +1,6 @@
 extends Node2D
 
 var G = 67  # Gravitational constant
-var time_scale = 1  # Time scale to make the simulation visible
 
 @onready var camera = $Camera2D
 var zoom_speed = 0.1
@@ -13,7 +12,7 @@ var bodies = []  # Array to keep track of grav bodies
 
 
 func _ready():
-	$Moon.velocity = Vector2(-300, -300) * time_scale  # Initial orbital velocity
+	$Moon.velocity = Vector2(-300, -300)
 	$Rocket.set_earth($Earth)
 	bodies += [$Earth, $Moon, $Rocket]
 
@@ -27,7 +26,7 @@ func _physics_process(delta):
 				apply_gravity(body, other_body, delta)
 
 func apply_gravity(body1: GravitationalBody, body2: GravitationalBody, delta: float):
-	var force = body1.gravitational_force(body2) * G * time_scale
+	var force = body1.gravitational_force(body2) * G
 	body1.apply_force(force * delta)
 	body2.apply_force(-force * delta)
 
