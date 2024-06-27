@@ -9,14 +9,14 @@
 [ext_resource type="Texture2D" uid="uid://bndrfwyabljta" path="res://assets/sun_10.png" id="6_2vqxk"]
 [ext_resource type="Script" path="res://GravitationalBody.gd" id="8_3spte"]
 
-[node name="Node2D" type="Node2D"]
+[node name="Space" type="Node2D"]
 script = ExtResource("1_43i8g")
 
 [node name="GravitationalBody" type="Sprite2D" parent="."]
 script = ExtResource("8_3spte")
 
 [node name="Earth" type="Sprite2D" parent="."]
-position = Vector2(1, 1)
+position = Vector2(1, -1)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("2_wp6ad")
 script = ExtResource("1_adqwi")
