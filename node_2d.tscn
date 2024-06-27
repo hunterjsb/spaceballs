@@ -9,7 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://bndrfwyabljta" path="res://assets/sun_10.png" id="6_2vqxk"]
 [ext_resource type="Script" path="res://GravitationalBody.gd" id="8_3spte"]
 
-[node name="Node2D" type="Node2D"]
+[node name="Space" type="Node2D"]
 script = ExtResource("1_43i8g")
 
 [node name="GravitationalBody" type="Sprite2D" parent="."]
