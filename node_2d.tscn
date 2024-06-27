@@ -32,6 +32,7 @@ mass = 7500.0
 radius = 20.0
 
 [node name="Rocket" type="Sprite2D" parent="."]
+position = Vector2(529, 297)
 scale = Vector2(0.15, 0.15)
 texture = ExtResource("6_2vqxk")
 script = ExtResource("3_wsw5a")

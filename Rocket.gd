@@ -2,9 +2,9 @@ extends GravitationalBody
 
 var launched = false
 var earth: GravitationalBody
-var base_launch_speed = 100  # Minimum launch speed
-var max_launch_speed = 1000  # Maximum launch speed
-var charge_rate = 200  # How fast the launch speed increases per second
+var base_launch_speed = 300
+var max_launch_speed = 2000
+var charge_rate = 250  # How fast the launch speed increases per second
 var current_charge = 0
 var launch_angle = deg_to_rad(45)  # Launch angle in radians (45 degrees)
 

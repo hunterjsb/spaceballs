@@ -19,8 +19,6 @@ func _ready():
 func _physics_process(delta):
 	# Apply gravity to spawned bodies
 	for body in bodies:
-		if $Rocket.launched:
-			apply_gravity($Rocket, body, delta)
 		for other_body in bodies:
 			if body != other_body:
 				apply_gravity(body, other_body, delta)
