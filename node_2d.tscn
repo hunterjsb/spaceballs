@@ -16,11 +16,11 @@ script = ExtResource("1_43i8g")
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 
 [node name="ColorRect" type="ColorRect" parent="ParallaxBackground"]
-offset_left = -15.0
-offset_top = -19.0
-offset_right = 25.0
-offset_bottom = 21.0
-scale = Vector2(29.5176, 17.0056)
+offset_left = -4836.0
+offset_top = -3095.0
+offset_right = -4796.0
+offset_bottom = -3055.0
+scale = Vector2(274.271, 162.848)
 color = Color(0, 0, 0, 1)
 
 [node name="StarField" type="ParallaxLayer" parent="ParallaxBackground"]
