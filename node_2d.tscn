@@ -12,6 +12,16 @@
 [node name="Space" type="Node2D"]
 script = ExtResource("1_43i8g")
 
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="ParallaxBackground"]
+offset_left = -15.0
+offset_top = -19.0
+offset_right = 25.0
+offset_bottom = 21.0
+scale = Vector2(29.5176, 17.0056)
+color = Color(0, 0, 0, 1)
+
 [node name="GravitationalBody" type="Sprite2D" parent="."]
 script = ExtResource("8_3spte")
 
