@@ -9,6 +9,7 @@ var max_zoom = 5.0
 
 var SpawnedBody = preload("res://SpawnedBody.gd")  # Preload the SpawnedBody script
 var bodies = []  # Array to keep track of grav bodies
+var charging = false  # Charging rocket
 
 
 func _ready():
@@ -27,8 +28,6 @@ func apply_gravity(body1: GravitationalBody, body2: GravitationalBody, delta: fl
 	var force = body1.gravitational_force(body2) * G
 	body1.apply_force(force * delta)
 	body2.apply_force(-force * delta)
-
-var charging = false
 
 func _input(event):
 	if event.is_action_pressed("ui_accept"):  # Space key pressed

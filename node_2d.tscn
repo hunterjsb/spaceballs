@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://bb01ou7oo7xio"]
+[gd_scene load_steps=12 format=3 uid="uid://bb01ou7oo7xio"]
 
 [ext_resource type="Script" path="res://node_2d.gd" id="1_43i8g"]
 [ext_resource type="Script" path="res://Earth.gd" id="1_adqwi"]
@@ -9,6 +9,11 @@
 [ext_resource type="Texture2D" uid="uid://bs6r8xwm5i22t" path="res://assets/moon_4.png" id="4_x0ey5"]
 [ext_resource type="Texture2D" uid="uid://bndrfwyabljta" path="res://assets/sun_10.png" id="6_2vqxk"]
 [ext_resource type="Script" path="res://GravitationalBody.gd" id="8_3spte"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_drh4f"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_n7p88"]
+radius = 8.06226
 
 [node name="Space" type="Node2D"]
 script = ExtResource("1_43i8g")
@@ -27,7 +32,10 @@ color = Color(0, 0, 0, 1)
 script = ExtResource("2_h6sv8")
 
 [node name="GravitationalBody" type="Sprite2D" parent="."]
+position = Vector2(1454, 565)
 script = ExtResource("8_3spte")
+mass = 0.0
+radius = 0.0
 
 [node name="Earth" type="Sprite2D" parent="."]
 position = Vector2(578, 326)
@@ -57,3 +65,16 @@ default_color = Color(0.941176, 0.784314, 0.0705882, 1)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(578, 326)
+
+[node name="GravBody" type="RigidBody2D" parent="."]
+visible = false
+position = Vector2(411, 415)
+physics_material_override = SubResource("PhysicsMaterial_drh4f")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GravBody"]
+position = Vector2(-1, -1)
+shape = SubResource("CircleShape2D_n7p88")
+
+[node name="Sprite2D" type="Sprite2D" parent="GravBody"]
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("6_2vqxk")

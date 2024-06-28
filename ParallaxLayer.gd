@@ -3,7 +3,7 @@ extends ParallaxLayer
 @export var star_density = 0.0001  # Stars per pixel squared
 @export var star_color = Color(1, 1, 1, 0.8)  # White with slight transparency
 
-var max_zoom = 5.0  # Match this with your camera's max_zoom
+var max_zoom = 6.0  # Match this with your camera's max_zoom
 var viewport_size: Vector2
 
 func _ready():
@@ -19,7 +19,11 @@ func generate_stars():
 	for i in range(star_count):
 		var star = ColorRect.new()
 		star.color = star_color
-		star.size = Vector2(1, 1)  # Small size for stars
+		
+		# Randomize star size between 1 and 3 pixels
+		var star_size = randf_range(1, 3)
+		star.size = Vector2(star_size, star_size)
+		
 		star.position = Vector2(
 			randf_range(-viewport_size.x * (max_zoom - 1), viewport_size.x * max_zoom),
 			randf_range(-viewport_size.y * (max_zoom - 1), viewport_size.y * max_zoom)
