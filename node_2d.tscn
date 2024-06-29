@@ -25,10 +25,12 @@ color = Color(0, 0, 0, 1)
 script = ExtResource("2_h6sv8")
 
 [node name="GravitationalBody" parent="." instance=ExtResource("3_xg3f6")]
+visible = false
 position = Vector2(-26, -28)
 
 [node name="Rocket" parent="." instance=ExtResource("4_twf33")]
-position = Vector2(519, 313)
+position = Vector2(531, 326)
+radius = 2.0
 
 [node name="PlayerCam" type="Camera2D" parent="."]
 position = Vector2(578, 326)
@@ -37,9 +39,11 @@ script = ExtResource("5_upedt")
 [node name="Earth" parent="." instance=ExtResource("5_8ywia")]
 position = Vector2(576, 320)
 scale = Vector2(0.5, 0.5)
+mass = 750000.0
+radius = 45.0
 
 [node name="Moon" parent="." instance=ExtResource("6_toa0n")]
-position = Vector2(882, 94)
+position = Vector2(809, 109)
 scale = Vector2(0.25, 0.25)
 mass = 10000.0
 radius = 25.0

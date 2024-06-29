@@ -42,18 +42,13 @@ func gravitational_force(other: GravitationalBody) -> Vector2:
 
 func _physics_process(delta):
 	move(delta)
-	check_collisions()
 
-func check_collisions():
-	for body in get_overlapping_bodies():
-		if body is GravitationalBody:
-			handle_collision(body)
+func _on_area_entered(area: Area2D):
+	print("AREA ENTERED")
+	if area is GravitationalBody:
+		handle_collision(area)
 
-func handle_collision(other_body: GravitationalBody):
+func handle_collision(area: GravitationalBody):
 	# Implement collision logic here
-	print("Collision between %s and %s" % [name, other_body.name])
+	print("Collision between %s and %s" % [name, area.name])
 	# might want to merge bodies, destroy smaller ones, or apply damage
-	
-func _process(delta):
-	if sprite:
-		sprite.rotation = -rotation

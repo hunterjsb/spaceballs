@@ -17,7 +17,7 @@ func set_earth(earth_body: GravitationalBody):
 func update_position():
 	if not launched and earth:
 		var surface_normal = (position - earth.position).normalized()
-		position = earth.position + surface_normal * (earth.radius + radius + 10)  # 10 is an offset
+		position = earth.position + surface_normal * (earth.radius + radius)
 		rotation = surface_normal.angle() + PI/2  # Point rocket away from Earth's center
 
 func start_charging():

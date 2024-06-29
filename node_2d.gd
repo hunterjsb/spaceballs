@@ -10,16 +10,25 @@ var charging = false  # Charging rocket
 
 
 func _ready():
-	$Moon.velocity = Vector2(-300, -300)
+	$PlayerCam.camera_lock_toggled.connect(_on_camera_lock_toggled)
+	
+	$Moon.velocity = Vector2(250, 150)
 	$Rocket.set_earth($Earth)
 	bodies += [$Earth, $Moon, $Rocket]
 
 func _physics_process(delta):
-	# Apply gravity to spawned bodies
+	var body_count = bodies.size()
+	for i in range(body_count):
+		for j in range(i + 1, body_count):
+			var body1 = bodies[i]
+			var body2 = bodies[j]
+			var force = body1.gravitational_force(body2) * G
+			body1.apply_force(force * delta)
+			body2.apply_force(-force * delta)
+	
+	# Move bodies after all forces are applied
 	for body in bodies:
-		for other_body in bodies:
-			if body != other_body:
-				apply_gravity(body, other_body, delta)
+		body.move(delta)
 
 func apply_gravity(body1: GravitationalBody, body2: GravitationalBody, delta: float):
 	var force = body1.gravitational_force(body2) * G
@@ -41,11 +50,7 @@ func _input(event):
 			$Rocket.launch()
 	
 	if event is InputEventMouseButton:
-		if event.button_index == MOUSE_BUTTON_WHEEL_UP and event.pressed and Input.is_key_pressed(KEY_CTRL):
-			$PlayerCam.zoom_camera($PlayerCam.zoom_speed)
-		elif event.button_index == MOUSE_BUTTON_WHEEL_DOWN and event.pressed and Input.is_key_pressed(KEY_CTRL):
-			$PlayerCam.zoom_camera(-$PlayerCam.zoom_speed)
-		elif event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
+		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
 			spawn_body(get_global_mouse_position())
 
 func _process(delta):
@@ -61,3 +66,7 @@ func spawn_body(position: Vector2):
 	
 	# Ensure the new body is on top of existing bodies
 	move_child(new_body, get_child_count() - 1)
+	
+func _on_camera_lock_toggled(is_locked: bool):
+	# Handle the camera lock toggle here
+	print("Camera lock toggled: ", is_locked)
