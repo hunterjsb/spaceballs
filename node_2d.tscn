@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://bb01ou7oo7xio"]
+[gd_scene load_steps=8 format=3 uid="uid://bb01ou7oo7xio"]
 
 [ext_resource type="Script" path="res://node_2d.gd" id="1_43i8g"]
 [ext_resource type="Script" path="res://ParallaxLayer.gd" id="2_h6sv8"]
 [ext_resource type="PackedScene" uid="uid://djmejinexsnue" path="res://gravitational_body.tscn" id="3_xg3f6"]
 [ext_resource type="PackedScene" uid="uid://bypuqx8wg5kh1" path="res://rocket.tscn" id="4_twf33"]
 [ext_resource type="PackedScene" uid="uid://dx0xksg2utbcp" path="res://earth.tscn" id="5_8ywia"]
+[ext_resource type="Script" path="res://PlayerCam.gd" id="5_upedt"]
 [ext_resource type="PackedScene" uid="uid://60havwyine8i" path="res://moon.tscn" id="6_toa0n"]
 
 [node name="Space" type="Node2D"]
@@ -29,8 +30,9 @@ position = Vector2(-26, -28)
 [node name="Rocket" parent="." instance=ExtResource("4_twf33")]
 position = Vector2(519, 313)
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="PlayerCam" type="Camera2D" parent="."]
 position = Vector2(578, 326)
+script = ExtResource("5_upedt")
 
 [node name="Earth" parent="." instance=ExtResource("5_8ywia")]
 position = Vector2(576, 320)

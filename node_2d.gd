@@ -2,10 +2,7 @@ extends Node2D
 
 var G = 67  # Gravitational constant
 
-@onready var camera = $Camera2D
-var zoom_speed = 0.1
-var min_zoom = 0.1
-var max_zoom = 5.0
+@onready var camera = $PlayerCam
 
 var SpawnedBody = preload("res://SpawnedBody.gd")  # Preload the SpawnedBody script
 var bodies = []  # Array to keep track of grav bodies
@@ -45,20 +42,15 @@ func _input(event):
 	
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_WHEEL_UP and event.pressed and Input.is_key_pressed(KEY_CTRL):
-			zoom_camera(zoom_speed)
+			$PlayerCam.zoom_camera($PlayerCam.zoom_speed)
 		elif event.button_index == MOUSE_BUTTON_WHEEL_DOWN and event.pressed and Input.is_key_pressed(KEY_CTRL):
-			zoom_camera(-zoom_speed)
+			$PlayerCam.zoom_camera(-$PlayerCam.zoom_speed)
 		elif event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
 			spawn_body(get_global_mouse_position())
 
 func _process(delta):
 	if charging:
 		$Rocket.continue_charging(delta)
-
-func zoom_camera(zoom_factor):
-	var new_zoom = camera.zoom + Vector2(zoom_factor, zoom_factor)
-	new_zoom = new_zoom.clamp(Vector2(min_zoom, min_zoom), Vector2(max_zoom, max_zoom))
-	camera.zoom = new_zoom
 	
 func spawn_body(position: Vector2):
 	var new_body = SpawnedBody.new()
