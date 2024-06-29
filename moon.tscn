@@ -6,11 +6,13 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_f04h7"]
 
 [node name="Moon" type="Area2D"]
-position = Vector2(1454, 565)
+position = Vector2(4, 1)
 script = ExtResource("1_epxf4")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_hb5a0")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-5, 8)
+scale = Vector2(6.56, 6.68)
 shape = SubResource("CircleShape2D_f04h7")

@@ -55,7 +55,7 @@ func _process(delta):
 func spawn_body(position: Vector2):
 	var new_body = SpawnedBody.new()
 	new_body.position = position
-	new_body.velocity = Vector2(randf_range(-100, 100), randf_range(-100, 100))  # Random initial velocity
+	new_body.velocity = Vector2(randf_range(-100, 100), randf_range(-100, 100))
 	add_child(new_body)
 	bodies.append(new_body)
 	
