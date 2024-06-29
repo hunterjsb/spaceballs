@@ -43,7 +43,7 @@ func gravitational_force(other: GravitationalBody) -> Vector2:
 func _physics_process(delta):
 	move(delta)
 
-func _on_area_entered(area: Area2D):
+func area_entered(area: Area2D):
 	print("AREA ENTERED")
 	if area is GravitationalBody:
 		handle_collision(area)
