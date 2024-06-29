@@ -1,19 +1,11 @@
-[gd_scene load_steps=12 format=3 uid="uid://bb01ou7oo7xio"]
+[gd_scene load_steps=7 format=3 uid="uid://bb01ou7oo7xio"]
 
 [ext_resource type="Script" path="res://node_2d.gd" id="1_43i8g"]
-[ext_resource type="Script" path="res://Earth.gd" id="1_adqwi"]
-[ext_resource type="Script" path="res://Moon.gd" id="2_g3qbh"]
 [ext_resource type="Script" path="res://ParallaxLayer.gd" id="2_h6sv8"]
-[ext_resource type="Texture2D" uid="uid://cycbnpfiu6erp" path="res://assets/earth_4.png" id="2_wp6ad"]
-[ext_resource type="Script" path="res://Rocket.gd" id="3_wsw5a"]
-[ext_resource type="Texture2D" uid="uid://bs6r8xwm5i22t" path="res://assets/moon_4.png" id="4_x0ey5"]
-[ext_resource type="Texture2D" uid="uid://bndrfwyabljta" path="res://assets/sun_10.png" id="6_2vqxk"]
-[ext_resource type="Script" path="res://GravitationalBody.gd" id="8_3spte"]
-
-[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_drh4f"]
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_n7p88"]
-radius = 8.06226
+[ext_resource type="PackedScene" uid="uid://djmejinexsnue" path="res://gravitational_body.tscn" id="3_xg3f6"]
+[ext_resource type="PackedScene" uid="uid://bypuqx8wg5kh1" path="res://rocket.tscn" id="4_twf33"]
+[ext_resource type="PackedScene" uid="uid://dx0xksg2utbcp" path="res://earth.tscn" id="5_8ywia"]
+[ext_resource type="PackedScene" uid="uid://60havwyine8i" path="res://moon.tscn" id="6_toa0n"]
 
 [node name="Space" type="Node2D"]
 script = ExtResource("1_43i8g")
@@ -31,50 +23,20 @@ color = Color(0, 0, 0, 1)
 [node name="StarField" type="ParallaxLayer" parent="ParallaxBackground"]
 script = ExtResource("2_h6sv8")
 
-[node name="GravitationalBody" type="Sprite2D" parent="."]
-position = Vector2(1454, 565)
-script = ExtResource("8_3spte")
-mass = 0.0
-radius = 0.0
+[node name="GravitationalBody" parent="." instance=ExtResource("3_xg3f6")]
+position = Vector2(-26, -28)
 
-[node name="Earth" type="Sprite2D" parent="."]
-position = Vector2(578, 326)
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("2_wp6ad")
-script = ExtResource("1_adqwi")
-mass = 500000.0
-radius = 40.0
-
-[node name="Moon" type="Sprite2D" parent="."]
-position = Vector2(816, 118)
-scale = Vector2(0.25, 0.25)
-texture = ExtResource("4_x0ey5")
-script = ExtResource("2_g3qbh")
-mass = 7500.0
-radius = 20.0
-
-[node name="Rocket" type="Sprite2D" parent="."]
-position = Vector2(529, 297)
-scale = Vector2(0.15, 0.15)
-texture = ExtResource("6_2vqxk")
-script = ExtResource("3_wsw5a")
-radius = 5.0
-
-[node name="LaunchIndicator" type="Line2D" parent="Rocket"]
-default_color = Color(0.941176, 0.784314, 0.0705882, 1)
+[node name="Rocket" parent="." instance=ExtResource("4_twf33")]
+position = Vector2(519, 313)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(578, 326)
 
-[node name="GravBody" type="RigidBody2D" parent="."]
-visible = false
-position = Vector2(411, 415)
-physics_material_override = SubResource("PhysicsMaterial_drh4f")
+[node name="Earth" parent="." instance=ExtResource("5_8ywia")]
+position = Vector2(576, 320)
+scale = Vector2(0.5, 0.5)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="GravBody"]
-position = Vector2(-1, -1)
-shape = SubResource("CircleShape2D_n7p88")
-
-[node name="Sprite2D" type="Sprite2D" parent="GravBody"]
-scale = Vector2(0.4, 0.4)
-texture = ExtResource("6_2vqxk")
+[node name="Moon" parent="." instance=ExtResource("6_toa0n")]
+position = Vector2(902, 97)
+scale = Vector2(0.25, 0.25)
+mass = 10000.0

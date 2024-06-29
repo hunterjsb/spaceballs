@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://bypuqx8wg5kh1"]
+
+[ext_resource type="Script" path="res://Rocket.gd" id="1_cte41"]
+[ext_resource type="Texture2D" uid="uid://bndrfwyabljta" path="res://assets/sun_10.png" id="2_viwho"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3nkr6"]
+
+[node name="Rocket" type="Area2D"]
+position = Vector2(367, 261)
+scale = Vector2(0.15, 0.15)
+script = ExtResource("1_cte41")
+radius = 5.0
+
+[node name="LaunchIndicator" type="Line2D" parent="."]
+default_color = Color(0.941176, 0.784314, 0.0705882, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_3nkr6")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_viwho")
